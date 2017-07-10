@@ -373,7 +373,7 @@ class BaseForm extends Widget
         }
         if ($type === self::INPUT_WIDGET) {
             $widgetClass = ArrayHelper::getValue($settings, 'widgetClass', []);
-            if (empty($widgetClass) && !$widgetClass instanceof InputWidget) {
+            if (empty($widgetClass) || !$widgetClass instanceof InputWidget) {
                 throw new InvalidConfigException("A valid 'widgetClass' for '{$attribute}' must be setup and extend from 'yii\\widgets\\InputWidget'.");
             }
             return static::getInput($field->$type($widgetClass, $options), $label, $hint);
@@ -450,7 +450,7 @@ class BaseForm extends Widget
         }
         if ($type === self::INPUT_WIDGET) {
             $widgetClass = ArrayHelper::getValue($settings, 'widgetClass', []);
-            if (empty($widgetClass) && !$widgetClass instanceof InputWidget) {
+            if (empty($widgetClass) || !$widgetClass instanceof InputWidget) {
                 throw new InvalidConfigException("A valid 'widgetClass' for '{$attribute}' must be setup and extend from 'yii\\widgets\\InputWidget'.");
             }
             $options['name'] = $attribute;
